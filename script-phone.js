@@ -11,6 +11,7 @@ $(function() {
 
     peer.on('open', () => {
         $('#my-id').text(peer.id);
+        step1();
         step2();
 });
 
@@ -40,45 +41,15 @@ $(function() {
     step2();
 });
 
-    navigator.mediaDevices.enumerateDevices()
-        .then(deviceInfos => {
-        const values = selectors.map(select => select.val() || '');
-    selectors.forEach(select => {
-        const children = select.children(':first');
-    while (children.length) {
-        select.remove(children);
-    }
-});
-
-    for (let i = 0; i !== deviceInfos.length; ++i) {
-        const deviceInfo = deviceInfos[i];
-        const option = $('<option>').val(deviceInfo.deviceId);
-
-        if (deviceInfo.kind === 'audioinput') {
-            option.text(deviceInfo.label ||
-                'Microphone ' + (audioSelect.children().length + 1));
-            audioSelect.append(option);
-        } else if (deviceInfo.kind === 'videoinput') {
-            option.text(deviceInfo.label ||
-                'Camera ' + (videoSelect.children().length + 1));
-            videoSelect.append(option);
+    function step1() {
+        if (existingCall) {
+            existingCall.replaceStream(stream);
+            return;
         }
+        step2();
     }
-
-    selectors.forEach((select, selectorIndex) => {
-        if (Array.prototype.slice.call(select.children()).some(n => {
-        return n.value === values[selectorIndex];
-})) {
-        select.val(values[selectorIndex]);
-    }
-});
-
-    videoSelect.on('change', step1);
-    audioSelect.on('change', step1);
-});
 
     function step2() {
-        $('#step3').hide();
         $('#step2').show();
         $('#callto-id').focus();
     }
@@ -97,7 +68,7 @@ $(function() {
         existingCall = call;
         $('#their-id').text(call.remoteId);
         call.on('close', step2);
-        $('#step2').hide();
+        $('#step1, #step2').hide();
         $('#step3').show();
     }
 });
