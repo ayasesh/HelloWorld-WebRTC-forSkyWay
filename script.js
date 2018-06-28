@@ -17,7 +17,6 @@ $(function () {
     // Receiving a call
     peer.on('call', call => {
         // Answer the call automatically (instead of prompting user) for demo purposes
-
         call.answer(localStream, {
             videoCodec: 'H264',
         });
