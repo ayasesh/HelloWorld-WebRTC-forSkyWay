@@ -98,11 +98,11 @@ $(function () {
                 existingCall.replaceStream(stream);
                 return;
             }
-            step2();
         }).catch(eer => {
             $('#step1-error').show();
             console.error(err);
         });
+        step2();
     }
 
     function step2() {
