@@ -1,8 +1,8 @@
 /* eslint-disable require-jsdoc */
-$(function () {
+function (key) {
     // Peer object
     const peer = new Peer({
-        key: window.__SKYWAY_KEY__,
+        key: key,
         debug: 3,
     });
 
@@ -128,4 +128,4 @@ $(function () {
         $('#step1, #step2').hide();
         $('#step3').show();
     }
-});
+};
