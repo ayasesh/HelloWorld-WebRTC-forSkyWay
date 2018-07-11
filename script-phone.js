@@ -1,5 +1,5 @@
 /* eslint-disable require-jsdoc */
-function (key) {
+function initPeer(key) {
     // Peer object
     const peer = new Peer({
         key: key,
