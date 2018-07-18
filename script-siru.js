@@ -126,6 +126,19 @@ function startTelepre(apikey, roomName) {
   startService(roomName, apikey)
 }
 
+$("form.connect").on("submit", function(ev) {
+  ev.preventDefault()
+  $(this).find("button").prop("disabled", true)
+
+  const apikey = $("#input-apikey").val()
+    , roomName = $("#input-room-name").val()
+
+  subTopicName = $("#input-topic-name").val()
+
+  storeLocalStorage({apikey, roomName, subTopicName})
+  startService(roomName, apikey)
+})
+
 ////////////////////////////////////////////////////////
 // start
 init();
