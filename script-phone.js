@@ -1,3 +1,13 @@
+
+$(function () {
+    $('#init-skyway').on('submit', e => {
+        e.preventDefault();
+        // Initiate a call!
+        console.log($('#app-key').val());
+        initPeer($('#app-key').val());
+    });
+});
+
 /* eslint-disable require-jsdoc */
 function initPeer(key) {
     // Peer object
