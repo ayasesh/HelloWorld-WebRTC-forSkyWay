@@ -52,18 +52,3 @@ function initPeer(key) {
     });
   });
 };
-
-function call(roomId) {
-    const call = peer.call(roomId);
-
-    // Wait for stream on the call, then set peer video display
-    call.on('stream', stream => {
-      const el = $('#video').get(0);
-      el.srcObject = stream;
-      el.play();
-    });
-
-    call.on('close', () => {
-      console.log('connection closed');
-    });
-}
