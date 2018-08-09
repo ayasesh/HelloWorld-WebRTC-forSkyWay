@@ -117,14 +117,18 @@ const storeLocalStorage = param => {
 // Event handler for start service by using `apikey`, `roomName` and `subscribe topic name`
 // Before starting services, we will store configuration items into localStorage
 //
-function startTelepre(apikey, roomName) {
+$("form.connect").on("submit", function(ev) {
+  ev.preventDefault()
   $(this).find("button").prop("disabled", true)
+
+  const apikey = $("#input-apikey").val()
+    , roomName = $("#input-room-name").val()
 
   subTopicName = $("#input-topic-name").val()
 
   storeLocalStorage({apikey, roomName, subTopicName})
   startService(roomName, apikey)
-}
+})
 
 ////////////////////////////////////////////////////////
 // start
