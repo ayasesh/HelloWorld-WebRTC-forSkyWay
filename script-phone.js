@@ -1,6 +1,4 @@
-let peer;
-
-let localStream;
+var peer;
 
 /* eslint-disable require-jsdoc */
 function initPeer(key) {
@@ -9,6 +7,8 @@ function initPeer(key) {
         key: key,
         debug: 3,
     });
+
+    let localStream;
 
     peer.on('open', () => {
         $('#my-id').text(peer.id);
