@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="skyway-latest.js"></script>
+    <script type="text/javascript" src="key.js"></script>
     <script type="text/javascript" src="script-phone.js"></script>
 </head>
 
@@ -13,13 +14,6 @@
 
         <!-- Video area -->
         <video id="their-video" autoplay></video>
-
-        <div id="init">
-            <form id="init-skyway" class="pure-form">
-                <input type="text" placeholder="App key" id="app-key">
-                <button href="#" class="pure-button pure-button-success" type="submit">Initialize</button>
-            </form>
-        </div>
 
         <!-- Make calls to others -->
         <div id="step2">
@@ -40,21 +34,6 @@
             <p>
                 <a href="#" class="pure-button pure-button-error" id="end-call">End call</a>
             </p>
-        </div>
-
-        <div class="select">
-            <label for="audioSource">Audio input source: </label>
-            <select id="audioSource"></select>
-        </div>
-
-        <!-- Get local audio/video stream -->
-        <div id="step1">
-            <p>Please click `allow` on the top of the screen so we can access your webcam and microphone for calls.</p>
-            <div id="step1-error">
-                <p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow
-                    when asked for permission by the browser.</p>
-                <a href="#" class="pure-button pure-button-error" id="step1-retry">Try again</a>
-            </div>
         </div>
 
 </body>
